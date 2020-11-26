@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.stream.Collectors;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +16,8 @@ public class MyServlet extends HttpServlet {
         req.getServletPath();
     }
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
-            IOException{
-
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator())); resp.setContentType("text/html");
+        resp.getWriter().write("Thank you client! "+reqBody);
     }
 }
