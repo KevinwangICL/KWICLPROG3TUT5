@@ -10,8 +10,8 @@ before_cache:
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-       - $HOME/.gradle/caches/
-       - $HOME/.gradle/wrapper/
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
 deploy:
   provider: heroku
   api_key: 5dc3f628-f391-40e8-89ad-bb21d9273550
