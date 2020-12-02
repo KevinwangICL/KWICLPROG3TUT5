@@ -1,3 +1,5 @@
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.util.stream.Collectors;
 import javax.servlet.ServletException;
@@ -19,5 +21,7 @@ public class MyServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator())); resp.setContentType("text/html");
         resp.getWriter().write("Thank you client! "+reqBody);
+        Gson gson = new Gson();
+        Patient p=gson.fromJson(reqBody,Patient.class);
     }
 }
